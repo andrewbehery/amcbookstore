@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.amcbookstore">
-
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,19 +11,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme"
-      android:testOnly="true">
-       <receiver
-        android:name=".MyDeviceAdminReceiver"
-        android:description="@string/admin_description"
-        android:label="@string/app_name"
-        android:permission="android.permission.BIND_DEVICE_ADMIN">
-        <meta-data
-            android:name="android.app.device_admin"
-            android:resource="@xml/device_admin_receiver" />
-        <intent-filter>
-            <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
-        </intent-filter>
-    </receiver>
+      android:launchMode="singleTask"
+      android:stateNotNeeded="true"
+    > 
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -36,6 +27,17 @@
             <category android:name="android.intent.category.HOME" />
         </intent-filter>
       </activity>
+
+        <receiver android:name="com.rnlocktask.MyAdmin"
+            android:label="@string/sample_device_admin"
+            android:description="@string/sample_device_admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                android:resource="@xml/my_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 

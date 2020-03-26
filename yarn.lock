@@ -5285,6 +5285,11 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
 
+react-native-lock-task@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-lock-task/-/react-native-lock-task-1.1.0.tgz#8ba95e9d86cb71c6314a4477dd8697e5015c7973"
+  integrity sha512-v9Ph+wsIoEWMUHYPX0day4AlDnpgwheQ/Y7KthP+76gEmZUAtv63MFl38UYor9XUM7e9iWj6GKMeFPfWqpurcw==
+
 react-native-reanimated@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.0.tgz#896db2576552ac59d288a1f6c7f00afc171f240c"
