@@ -47,7 +47,7 @@ const SearchScreen = () => {
         cart={cart}
       />
       <View style={styles.lineStyle} />
-      <CartList cart={cart} title="Your Cart:" />
+      <CartList cart={cart} setCart={setCart} title="Your Cart:" />
     </View>
   );
 };

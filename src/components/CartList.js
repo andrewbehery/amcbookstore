@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import CartDetail from './CartDetail';
 
-const CartList = ({cart, title}) => {
+const CartList = ({cart, setCart, title}) => {
   return (
     <View style={styles.backgroundStyle}>
       {cart.length > 0 ? <Text style={styles.titleStyle}>{title}</Text> : null}
@@ -19,7 +19,7 @@ const CartList = ({cart, title}) => {
                 width: 685.5,
                 borderRadius: 5,
               }}>
-              <CartDetail item={item} />
+              <CartDetail item={item} cart={cart} setCart={setCart} />
             </View>
           );
         }}></FlatList>

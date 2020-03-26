@@ -9,7 +9,6 @@ const ItemsDetail = ({item, addToCart, cart}) => {
   const cartItem = {bookTitle, bookPrice, author, quantity: 1};
 
   const checkCart = (item, cartList) => {
-    console.log(item);
     cartList.find(book => book.bookTitle === item.bookTitle)
       ? null
       : addToCart(item);
