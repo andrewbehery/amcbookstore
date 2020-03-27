@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Picker} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const CartDetail = ({item, cart, setCart}) => {
+const CartDetail = ({item, cart, setCart, deleteBook}) => {
   const [pickerSelector, setpickerSelector] = useState(1);
   const pickerValues = [];
   for (let i = 1; i < 10; i++) {
@@ -19,9 +19,11 @@ const CartDetail = ({item, cart, setCart}) => {
       <Text style={styles.titleAndAuthorStyle}>
         {item.bookTitle} — {item.author}
       </Text>
-      <View style={styles.trashButtonStyle}>
+      <TouchableOpacity
+        style={styles.trashButtonStyle}
+        onPress={() => deleteBook(item.bookTitle)}>
         <Icon style={styles.trashStyle} name="trash" />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.quantityTextStyle}>Quantity:</Text>
       <TouchableOpacity>
         <View style={styles.quantityStyle}>

@@ -29,11 +29,11 @@ const ItemsList = ({items, title, cart, addToCart}) => {
 const styles = StyleSheet.create({
   backgroundStyle: {
     marginTop: 15,
-    marginBottom: 75,
+    marginBottom: 25,
     borderRadius: 5,
     marginLeft: 53,
     marginRight: 71,
-    height: 450,
+    height: 550,
   },
   titleStyle: {
     fontSize: 18,

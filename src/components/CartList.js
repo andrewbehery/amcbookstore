@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import CartDetail from './CartDetail';
 
-const CartList = ({cart, setCart, title}) => {
+const CartList = ({cart, setCart, deleteBook, title}) => {
   return (
     <View style={styles.backgroundStyle}>
       {cart.length > 0 ? <Text style={styles.titleStyle}>{title}</Text> : null}
@@ -19,10 +19,16 @@ const CartList = ({cart, setCart, title}) => {
                 width: 685.5,
                 borderRadius: 5,
               }}>
-              <CartDetail item={item} cart={cart} setCart={setCart} />
+              <CartDetail
+                item={item}
+                setCart={setCart}
+                cart={cart}
+                deleteBook={deleteBook}
+              />
             </View>
           );
         }}></FlatList>
+      <Text>Total</Text>
     </View>
   );
 };
@@ -33,6 +39,7 @@ const styles = StyleSheet.create({
   backgroundStyle: {
     marginLeft: 53,
     height: 400,
+    marginBottom: 50,
   },
   titleStyle: {
     fontFamily: 'Montserrat-Bold',
