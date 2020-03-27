@@ -5,7 +5,15 @@ import ItemsDetail from './ItemsDetail';
 const ItemsList = ({items, title, cart, addToCart}) => {
   return (
     <View style={styles.backgroundStyle}>
-      {items.length > 0 ? <Text style={styles.titleStyle}>{title}</Text> : null}
+      {Array.isArray(items) && items.length > 0 ? (
+        <Text style={styles.titleStyle}>{title}</Text>
+      ) : null}
+      {Array.isArray(items) ? null : (
+        <Text style={styles.titleStyle}>
+          We don't have that, check your spelling, or search the title from the
+          beginning (including the word "the").
+        </Text>
+      )}
       <FlatList
         showsVerticalScrollIndicator={false}
         data={items}
@@ -25,6 +33,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginLeft: 53,
     marginRight: 71,
+    height: 450,
   },
   titleStyle: {
     fontSize: 18,

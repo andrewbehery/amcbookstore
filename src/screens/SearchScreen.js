@@ -36,6 +36,10 @@ const SearchScreen = () => {
     <View style={styles.backgroundStyle}>
       <SearchBar
         term={term}
+        clear={() => {
+          setTerm('');
+          searchApi('');
+        }}
         onTermChange={newTerm => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
       />
@@ -46,7 +50,10 @@ const SearchScreen = () => {
         addToCart={newItem => setCart([...cart, newItem])}
         cart={cart}
       />
-      <View style={styles.lineStyle} />
+
+      {Array.isArray(items) && items.length > 0 ? (
+        <View style={styles.lineStyle} />
+      ) : null}
       <CartList cart={cart} setCart={setCart} title="Your Cart:" />
     </View>
   );
@@ -57,7 +64,7 @@ export default SearchScreen;
 const styles = StyleSheet.create({
   backgroundStyle: {
     marginTop: 105,
-    flex: 1,
+    display: 'flex',
   },
   lineStyle: {
     borderBottomColor: '#707070',

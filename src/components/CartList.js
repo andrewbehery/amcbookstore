@@ -32,6 +32,7 @@ export default CartList;
 const styles = StyleSheet.create({
   backgroundStyle: {
     marginLeft: 53,
+    height: 400,
   },
   titleStyle: {
     fontFamily: 'Montserrat-Bold',
