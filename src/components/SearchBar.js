@@ -14,9 +14,11 @@ const SearchBar = ({term, clear, onTermChange, onTermSubmit}) => {
         onChangeText={onTermChange}
         onEndEditing={onTermSubmit}
       />
-      <TouchableOpacity style={styles.testStyle} onPress={clear}>
-        <Text style={styles.clearStyle}>Clear</Text>
-      </TouchableOpacity>
+      {term.length == 0 ? null : (
+        <TouchableOpacity style={styles.testStyle} onPress={clear}>
+          <Text style={styles.clearStyle}>Clear</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ContinueButton = () => {
   return (
-    <View style={styles.buttonStyle}>
-      <Text style={styles.continueStyle}>CONTINUE</Text>
-    </View>
+    <TouchableOpacity>
+      <View style={styles.buttonStyle}>
+        <Text style={styles.continueStyle}>CONTINUE</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
