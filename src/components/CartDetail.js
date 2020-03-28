@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Picker} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const CartDetail = ({item, cart, setCart, deleteBook}) => {
+const CartDetail = ({item, cart, changeQuantity, deleteBook}) => {
   const [pickerSelector, setpickerSelector] = useState(1);
   const pickerValues = [];
   for (let i = 1; i < 10; i++) {
@@ -10,8 +10,15 @@ const CartDetail = ({item, cart, setCart, deleteBook}) => {
   }
 
   const updateQuantity = (cartList, item, newQuantity) => {
-    item.quantity = newQuantity;
-    setCart(cartList);
+    let newItem = item;
+    let newCart = cartList;
+    newItem.quantity = newQuantity;
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].bookTitle === item.bookTitle) {
+        newCart.splice(i, 1, newItem);
+      }
+    }
+    changeQuantity(newCart);
   };
 
   return (
@@ -95,7 +102,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   bookPriceStyle: {
-    flex: 0.6,
+    flex: 0.7,
     fontFamily: 'Montserrat-Light',
     fontSize: 14,
     marginLeft: 12,

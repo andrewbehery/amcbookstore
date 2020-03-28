@@ -4,7 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 const ContinueButton = () => {
   return (
     <View style={styles.buttonStyle}>
-      <Text>hallo</Text>
+      <Text style={styles.continueStyle}>CONTINUE</Text>
     </View>
   );
 };
@@ -20,5 +20,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  continueStyle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 24,
+    color: '#0F5891',
   },
 });

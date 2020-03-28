@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import catalog from '../api/catalog';
@@ -11,6 +11,19 @@ const SearchScreen = () => {
   const [items, setItems] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const calculateTotal = (cartList, currentTotal) => {
+    let tot = 0;
+    cartList.forEach(book => {
+      tot += book.quantity * book.bookPrice;
+    });
+    setTotal(tot);
+  };
+
+  useEffect(() => {
+    calculateTotal(cart, total);
+  }, [cart, total]);
 
   const deleteBook = bookTitle => {
     setCart(cart.filter(book => book.bookTitle !== bookTitle));
@@ -37,6 +50,11 @@ const SearchScreen = () => {
     }
   };
 
+  const SearchTextChanged = term => {
+    setTerm(term);
+    searchApi(term);
+  };
+
   return (
     <View style={styles.backgroundStyle}>
       <SearchBar
@@ -45,7 +63,7 @@ const SearchScreen = () => {
           setTerm('');
           searchApi('');
         }}
-        onTermChange={newTerm => setTerm(newTerm)}
+        onTermChange={SearchTextChanged}
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
@@ -61,11 +79,20 @@ const SearchScreen = () => {
       ) : null}
       <CartList
         cart={cart}
-        setCart={setCart}
+        changeQuantity={newCart => {
+          setCart([...newCart]);
+        }}
         deleteBook={deleteBook}
         title="Your Cart:"
       />
-      <ContinueButton />
+      {cart.length > 0 ? (
+        <>
+          <Text style={styles.totalStyle}>
+            Total: {`$${Number(total / 100).toFixed(2)}`}
+          </Text>
+          <ContinueButton />
+        </>
+      ) : null}
     </View>
   );
 };
@@ -83,5 +110,12 @@ const styles = StyleSheet.create({
     marginLeft: -20,
     width: 686,
     alignSelf: 'center',
+  },
+  totalStyle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 20,
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    marginRight: 52,
   },
 });
