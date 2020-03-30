@@ -2,9 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const ContinueButton = () => {
+const ContinueButton = ({total, checkout}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => checkout(total)}>
       <View style={styles.buttonStyle}>
         <Text style={styles.continueStyle}>CONTINUE</Text>
       </View>

@@ -5,6 +5,8 @@ import catalog from '../api/catalog';
 import ItemsList from '../components/ItemsList';
 import CartList from '../components/CartList';
 import ContinueButton from '../components/ContinueButton';
+import useReaderSDKauth from '../hooks/useReaderSDKauth';
+import useCheckout from '../hooks/useCheckout';
 
 const SearchScreen = () => {
   const [term, setTerm] = useState('');
@@ -12,6 +14,12 @@ const SearchScreen = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const authorizeReaderSDK = useReaderSDKauth();
+  const checkout = useCheckout();
+
+  /* useEffect(() => {
+    authorizeReaderSDK();
+  }, []); */
 
   const calculateTotal = (cartList, currentTotal) => {
     let tot = 0;
@@ -90,7 +98,7 @@ const SearchScreen = () => {
           <Text style={styles.totalStyle}>
             Total: {`$${Number(total / 100).toFixed(2)}`}
           </Text>
-          <ContinueButton />
+          <ContinueButton total={total} checkout={checkout} />
         </>
       ) : null}
     </View>

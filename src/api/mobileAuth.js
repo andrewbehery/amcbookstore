@@ -4,6 +4,6 @@ export default axios.create({
   baseURL: 'https://connect.squareup.com/mobile',
   headers: {
     Authorization:
-      'Bearer EAAAEA9zeHF-fS0vmz37SJf-obc_lwdrV65acY1h35vcdG8LW3UZR9A0xob-8e3k',
+      'Bearer EAAAEKgKUWe8QyZMfCv7wBYI4vTby-h9jsnHgc31rtYInJg8zfPUYS9ufQnDUask',
   },
 });
