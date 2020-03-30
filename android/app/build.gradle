@@ -129,11 +129,22 @@ android {
 
     defaultConfig {
         applicationId "com.amcbookstore"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
     }
+
+     dexOptions {
+        // Ensures incremental builds remain fast
+        preDexLibraries true
+        // Required to build with Reader SDK
+        jumboMode true
+        // Required to build with Reader SDK
+        keepRuntimeAnnotatedClasses false
+    }
+
     splits {
         abi {
             reset()
@@ -179,7 +190,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-lock-task')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
@@ -199,6 +209,18 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+repositories {
+  google()
+  maven {
+    url "https://sdk.squareup.com/android"
+    credentials {
+      username SQUARE_READER_SDK_APPLICATION_ID
+      password SQUARE_READER_SDK_REPOSITORY_PASSWORD
+    }
+  }
+  jcenter()
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
