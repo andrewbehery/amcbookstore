@@ -4,6 +4,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchScreen from './src/screens/SearchScreen';
+import CheckoutScreen from './src/screens/CheckoutScreen';
 import RNLockTask from 'react-native-lock-task';
 
 const Stack = createStackNavigator();
@@ -29,7 +30,8 @@ function App() {
             borderBottomWidth: 3,
           },
         }}>
-        <Stack.Screen name="Cart" component={SearchScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

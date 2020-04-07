@@ -8,7 +8,7 @@ import ContinueButton from '../components/ContinueButton';
 import useReaderSDKauth from '../hooks/useReaderSDKauth';
 import useCheckout from '../hooks/useCheckout';
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
   const [term, setTerm] = useState('');
   const [items, setItems] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -98,7 +98,11 @@ const SearchScreen = () => {
           <Text style={styles.totalStyle}>
             Total: {`$${Number(total / 100).toFixed(2)}`}
           </Text>
-          <ContinueButton total={total} checkout={checkout} />
+          <ContinueButton
+            total={total}
+            checkout={checkout}
+            navigation={navigation}
+          />
         </>
       ) : null}
     </View>
