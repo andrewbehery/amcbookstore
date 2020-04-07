@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, YellowBox} from 'react-native';
+import CashorCard from '../components/CashorCard';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -11,6 +12,10 @@ const CheckoutScreen = ({route, navigation}) => {
   return (
     <View style={styles.backgroundStyle}>
       <Text style={styles.questionStyle}>How Would You Like To Pay?</Text>
+      <View style={{flexDirection: 'row'}}>
+        <CashorCard title="CASH" />
+        <CashorCard title="CARD" />
+      </View>
     </View>
   );
 };
