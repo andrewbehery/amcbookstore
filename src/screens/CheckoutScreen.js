@@ -16,6 +16,9 @@ const CheckoutScreen = ({route, navigation}) => {
         <CashorCard title="CASH" />
         <CashorCard title="CARD" />
       </View>
+      <Text style={styles.totalStyle}>
+        TOTAL: {`$${Number(total / 100).toFixed(2)}`}
+      </Text>
     </View>
   );
 };
@@ -32,5 +35,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: 22,
     color: '#0F5891',
+  },
+  totalStyle: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 20,
+    marginTop: 35,
   },
 });
