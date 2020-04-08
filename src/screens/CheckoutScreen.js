@@ -16,6 +16,12 @@ const CheckoutScreen = ({route, navigation}) => {
   const {emptyCart} = route.params;
   const [cashOrCardToggle, setCashOrCardToggle] = useState('');
 
+  setTimeout(() => {
+    emptyTerm();
+    emptyCart();
+    navigation.goBack();
+  }, 150000);
+
   return (
     <View style={styles.backgroundStyle}>
       <Text style={styles.questionStyle}>How Would You Like To Pay?</Text>
