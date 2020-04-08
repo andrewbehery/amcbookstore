@@ -1,25 +1,26 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Image, View, Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const CardInstructions = ({navigation}) => {
+const CashInstructions = ({total, checkout}) => {
   return (
     <View style={styles.backgroundStyle}>
-      <Text style={styles.textStyle}>Put Cash In This Box, On Your Right</Text>
       <Image
-        style={{width: 500, height: 500}}
-        source={require('../assets/Images/cashbox.jpeg')}
+        style={{width: 400, height: 440}}
+        source={require('../assets/Images/swipe2.jpg')}
       />
       <TouchableOpacity
         style={styles.buttonStyle}
-        onPress={() => navigation.goBack()}>
-        <Text style={styles.doneStyle}>DONE</Text>
+        onPress={() => {
+          checkout(total);
+        }}>
+        <Text style={styles.checkoutStyle}>CHECKOUT</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default CardInstructions;
+export default CashInstructions;
 
 const styles = StyleSheet.create({
   backgroundStyle: {
@@ -27,13 +28,7 @@ const styles = StyleSheet.create({
     height: 701,
     marginTop: 50,
     alignItems: 'center',
-    borderWidth: 4,
-    borderColor: 'red',
     justifyContent: 'space-around',
-  },
-  textStyle: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 22,
   },
   buttonStyle: {
     width: 698,
@@ -43,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  doneStyle: {
+  checkoutStyle: {
     fontFamily: 'Montserrat-Bold',
     fontSize: 24,
     color: '#0F5891',
