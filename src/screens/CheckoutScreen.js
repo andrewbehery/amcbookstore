@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, YellowBox} from 'react-native';
 import CashorCard from '../components/CashorCard';
 import CashInstructions from '../components/CashInstructions';
 import CardInstructions from '../components/CardInstructions';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -35,6 +36,19 @@ const CheckoutScreen = ({route, navigation}) => {
       {cashOrCardToggle === 'CARD' ? (
         <CardInstructions total={total} checkout={checkout} />
       ) : null}
+      <View style={styles.bottomButtonsStyle}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.bottomTextStyle}>Return To Cart</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            emptyTerm();
+            emptyCart();
+            navigation.goBack();
+          }}>
+          <Text style={styles.bottomTextStyle}>Cancel Transaction</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -56,5 +70,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: 30,
     marginTop: 35,
+  },
+  bottomButtonsStyle: {
+    flexGrow: 1,
+    flexDirection: 'row',
+    width: 770,
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginBottom: 20,
+  },
+  bottomTextStyle: {
+    fontSize: 20,
+    color: '#0F5891',
+    fontFamily: 'Montserrat-Bold',
   },
 });
