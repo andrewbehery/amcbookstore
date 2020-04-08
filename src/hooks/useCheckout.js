@@ -7,7 +7,7 @@ import {
 } from 'react-native-square-reader-sdk';
 
 export default () => {
-  const checkout = async total => {
+  const checkout = async (total, emptyTerm, emptyCart, navigation) => {
     const checkoutParams = {
       amountMoney: {
         amount: total,
@@ -24,12 +24,15 @@ export default () => {
         showSeparateTipScreen: false,
         tipPercentages: [15, 20, 30],
       },
-      additionalPaymentTypes: ['manual_card_entry'],
+      additionalPaymentTypes: ['cash', 'manual_card_entry'],
     };
 
     try {
       const checkoutResult = await startCheckoutAsync(checkoutParams);
       // checkout finished successfully and checkoutResult is available
+      emptyTerm();
+      emptyCart();
+      navigation.goBack();
     } catch (ex) {
       switch (ex.code) {
         case CheckoutErrorCancelled:

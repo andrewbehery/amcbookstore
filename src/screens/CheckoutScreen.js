@@ -34,7 +34,13 @@ const CheckoutScreen = ({route, navigation}) => {
         />
       ) : null}
       {cashOrCardToggle === 'CARD' ? (
-        <CardInstructions total={total} checkout={checkout} />
+        <CardInstructions
+          total={total}
+          checkout={checkout}
+          emptyTerm={emptyTerm}
+          emptyCart={emptyCart}
+          navigation={navigation}
+        />
       ) : null}
       <View style={styles.bottomButtonsStyle}>
         <TouchableOpacity onPress={() => navigation.goBack()}>

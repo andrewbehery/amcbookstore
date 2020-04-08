@@ -2,7 +2,13 @@ import React from 'react';
 import {StyleSheet, Image, View, Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const CashInstructions = ({total, checkout}) => {
+const CashInstructions = ({
+  total,
+  checkout,
+  emptyTerm,
+  emptyCart,
+  navigation,
+}) => {
   return (
     <View style={styles.backgroundStyle}>
       <Image
@@ -12,7 +18,7 @@ const CashInstructions = ({total, checkout}) => {
       <TouchableOpacity
         style={styles.buttonStyle}
         onPress={() => {
-          checkout(total);
+          checkout(total, emptyTerm, emptyCart, navigation);
         }}>
         <Text style={styles.checkoutStyle}>CHECKOUT</Text>
       </TouchableOpacity>
