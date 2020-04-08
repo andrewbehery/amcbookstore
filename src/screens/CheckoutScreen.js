@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, YellowBox} from 'react-native';
 import CashorCard from '../components/CashorCard';
 import CashInstructions from '../components/CashInstructions';
@@ -10,17 +10,21 @@ YellowBox.ignoreWarnings([
 const CheckoutScreen = ({route, navigation}) => {
   const {total} = route.params;
   const {checkout} = route.params;
+  const [cashOrCardToggle, setCashOrCardToggle] = useState('');
+
   return (
     <View style={styles.backgroundStyle}>
       <Text style={styles.questionStyle}>How Would You Like To Pay?</Text>
       <View style={{flexDirection: 'row'}}>
-        <CashorCard title="CASH" />
+        <CashorCard title="CASH" toggle={() => setCashOrCardToggle('CASH')} />
         <CashorCard title="CARD" />
       </View>
       <Text style={styles.totalStyle}>
         TOTAL: {`$${Number(total / 100).toFixed(2)}`}
       </Text>
-      <CashInstructions />
+      {cashOrCardToggle === 'CASH' ? (
+        <CashInstructions total={total} checkout={checkout} />
+      ) : null}
     </View>
   );
 };

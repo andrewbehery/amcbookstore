@@ -24,7 +24,7 @@ export default () => {
         showSeparateTipScreen: false,
         tipPercentages: [15, 20, 30],
       },
-      additionalPaymentTypes: ['cash', 'manual_card_entry', 'other'],
+      additionalPaymentTypes: ['manual_card_entry'],
     };
 
     try {

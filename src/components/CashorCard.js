@@ -2,9 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const CashorCard = ({title}) => {
+const CashorCard = ({title, toggle}) => {
   return (
-    <TouchableOpacity style={styles.backgroundStyle}>
+    <TouchableOpacity style={styles.backgroundStyle} onPress={toggle}>
       <Text style={styles.textStyle}>{title}</Text>
     </TouchableOpacity>
   );
