@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const CardInstructions = ({navigation}) => {
+const CardInstructions = ({navigation, emptyTerm, emptyCart}) => {
   return (
     <View style={styles.backgroundStyle}>
       <Text style={styles.textStyle}>Put Cash In This Box, On Your Right</Text>
@@ -12,7 +12,11 @@ const CardInstructions = ({navigation}) => {
       />
       <TouchableOpacity
         style={styles.buttonStyle}
-        onPress={() => navigation.goBack()}>
+        onPress={() => {
+          emptyTerm();
+          emptyCart();
+          navigation.goBack();
+        }}>
         <Text style={styles.doneStyle}>DONE</Text>
       </TouchableOpacity>
     </View>
@@ -27,8 +31,6 @@ const styles = StyleSheet.create({
     height: 701,
     marginTop: 50,
     alignItems: 'center',
-    borderWidth: 4,
-    borderColor: 'red',
     justifyContent: 'space-around',
   },
   textStyle: {

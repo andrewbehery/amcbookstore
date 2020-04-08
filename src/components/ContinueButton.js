@@ -2,13 +2,21 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const ContinueButton = ({total, checkout, navigation}) => {
+const ContinueButton = ({
+  total,
+  checkout,
+  navigation,
+  emptyTerm,
+  emptyCart,
+}) => {
   return (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('Checkout', {
           total: total,
           checkout: checkout,
+          emptyTerm: emptyTerm,
+          emptyCart: emptyCart,
         })
       }>
       <View style={styles.buttonStyle}>

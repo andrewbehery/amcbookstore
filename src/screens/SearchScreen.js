@@ -102,6 +102,11 @@ const SearchScreen = ({navigation}) => {
             total={total}
             checkout={checkout}
             navigation={navigation}
+            emptyTerm={() => {
+              setTerm('');
+              SearchTextChanged('');
+            }}
+            emptyCart={() => setCart([])}
           />
         </>
       ) : null}

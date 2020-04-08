@@ -11,6 +11,8 @@ YellowBox.ignoreWarnings([
 const CheckoutScreen = ({route, navigation}) => {
   const {total} = route.params;
   const {checkout} = route.params;
+  const {emptyTerm} = route.params;
+  const {emptyCart} = route.params;
   const [cashOrCardToggle, setCashOrCardToggle] = useState('');
 
   return (
@@ -25,12 +27,14 @@ const CheckoutScreen = ({route, navigation}) => {
       </Text>
       {cashOrCardToggle === 'CASH' ? (
         <CashInstructions
-          total={total}
-          checkout={checkout}
           navigation={navigation}
+          emptyTerm={emptyTerm}
+          emptyCart={emptyCart}
         />
       ) : null}
-      {cashOrCardToggle === 'CARD' ? <CardInstructions /> : null}
+      {cashOrCardToggle === 'CARD' ? (
+        <CardInstructions total={total} checkout={checkout} />
+      ) : null}
     </View>
   );
 };
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
   },
   totalStyle: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 20,
+    fontSize: 30,
     marginTop: 35,
   },
 });
