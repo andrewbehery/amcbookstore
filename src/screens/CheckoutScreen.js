@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, YellowBox} from 'react-native';
 import CashorCard from '../components/CashorCard';
+import CashInstructions from '../components/CashInstructions';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -19,6 +20,7 @@ const CheckoutScreen = ({route, navigation}) => {
       <Text style={styles.totalStyle}>
         TOTAL: {`$${Number(total / 100).toFixed(2)}`}
       </Text>
+      <CashInstructions />
     </View>
   );
 };
