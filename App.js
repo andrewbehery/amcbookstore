@@ -31,7 +31,13 @@ function App() {
           },
         }}>
         <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="Checkout" component={CheckoutScreen} />
+        <Stack.Screen
+          name="Checkout"
+          component={CheckoutScreen}
+          options={{
+            headerLeft: null,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
