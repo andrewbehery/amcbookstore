@@ -10,8 +10,8 @@ import RNLockTask from 'react-native-lock-task';
 const Stack = createStackNavigator();
 
 function App() {
-  RNLockTask.startLockTask();
-
+  /*   RNLockTask.startLockTask();
+   */
   return (
     <NavigationContainer>
       <Stack.Navigator
